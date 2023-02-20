@@ -46,8 +46,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Fire SageMaker
       id: sm_train
-      with:
-        role-to-assume: ${{ secrets.IAM_ROLE_NAME }}
       env:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
