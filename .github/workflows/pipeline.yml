@@ -18,10 +18,7 @@ jobs:
       with:
         aws-region: eu-central-1
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        #role-to-assume: ${{ secrets.IAM_ROLE_NAME }}
-        
-      
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}        
 
     # see: https://github.com/aws-actions/amazon-ecr-login
     - name: Log in to Amazon ECR
@@ -32,10 +29,9 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
-        IMAGE_TAG: ${{ github.sha }}
+        IMAGE_TAG: latest
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-        echo "Funciona"
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
         
   submit_training_job:
