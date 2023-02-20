@@ -47,7 +47,7 @@ boston_estimator = Estimator(
     environment={
              "BUCKET_NAME": BUCKET_NAME,
              "PREFIX": PREFIX,
-#             "GITHUB_SHA": GITHUB_SHA,
+             "GITHUB_SHA": GITHUB_SHA,
              "REGION": REGION,},
 
     tags=[{"Key": "email",
