@@ -19,7 +19,7 @@ IAM_ROLE_NAME = os.environ['IAM_ROLE_NAME']
 GITHUB_SHA = os.environ['GITHUB_SHA']
 ACCOUNT_ID = session.boto_session.client(
     'sts').get_caller_identity()['Account']
-ECR_REPOSITORY: ${{ secrets.REPO_NAME }}
+ECR_REPOSITORY = os.environ['REPO_NAME']
 # Replace with your desired training instance
 training_instance = 'ml.m5.large'
 
