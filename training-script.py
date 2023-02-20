@@ -5,7 +5,6 @@ import requests
 import json
 from datetime import datetime, timezone
 
-
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
