@@ -19,7 +19,6 @@ IAM_ROLE_NAME = os.environ['IAM_ROLE_NAME']
 GITHUB_SHA = os.environ['GITHUB_SHA']
 ACCOUNT_ID = session.boto_session.client(
     'sts').get_caller_identity()['Account']
-ECR_REPOSITORY = os.environ['REPO_NAME']
 # Replace with your desired training instance
 training_instance = 'ml.m5.large'
 
@@ -37,7 +36,7 @@ base_job_name = 'boston-housing-model'
 
 # Define estimator object
 boston_estimator = Estimator(
-    image_uri=f'{ACCOUNT_ID}.dkr.ecr.{REGION}.amazonaws.com/{ECR_REPOSITORY}:latest',
+    image_uri=f'{ACCOUNT_ID}.dkr.ecr.{REGION}.amazonaws.com/github-actions-test:latest',
     role=IAM_ROLE_NAME ,
     instance_count=1,
     instance_type=training_instance,
@@ -48,7 +47,7 @@ boston_estimator = Estimator(
     environment={
              "BUCKET_NAME": BUCKET_NAME,
              "PREFIX": PREFIX,
-             "GITHUB_SHA": GITHUB_SHA,
+#             "GITHUB_SHA": GITHUB_SHA,
              "REGION": REGION,},
 
     tags=[{"Key": "email",
