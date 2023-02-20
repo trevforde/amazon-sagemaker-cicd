@@ -18,7 +18,7 @@ OBJECT_KEY = f'{PREFIX}/reports.csv'
 s3 = boto3.resource('s3')
 
 try:
-       s3.Bucket(BUCKET_NAME).download_file('boston-housing-regression/reports.csv', 'reports.csv')
+       s3.Bucket(BUCKET_NAME).download_file(OBJECT_KEY, 'reports.csv')
 
        # Load reports df
        reports_df = pd.read_csv('reports.csv')
