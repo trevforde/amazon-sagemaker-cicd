@@ -38,7 +38,7 @@ jobs:
   submit_training_job:
     needs: [build_image_push_to_ECR]
     runs-on: [ubuntu-latest]
-    container: ghcr.io/iterative/cml:0-dvc2-base1 #docker://dvcorg/cml-py3:latest
+    container: docker://dvcorg/cml-py3:latest #ghcr.io/iterative/cml:0-dvc2-base1
     steps:
     - uses: actions/checkout@v2
     - name: Fire SageMaker
